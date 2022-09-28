@@ -1,0 +1,249 @@
+:root {
+  /* Primary Colors */
+  --orange: #ff7d1a;
+  --pale-orange: #ffede0;
+
+  /* Neutral Colors */
+  --very-dark-blue: #1d2025;
+  --dark-grayish-blue: #68707d;
+  --grayish-blue: #b6bcc8;
+  --light-grayish-blue: #f7f8fd;
+  --white: #ffffff;
+  --black: #000000;
+  --black-with-opacity: #0005;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 0px 4vw;
+}
+
+main {
+  display: flex;
+  padding: 100px 50px;
+  gap: 10%;
+}
+
+/* main > * {
+  flex: 1;
+} */
+
+.product-images {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  max-width: 800px;
+  width: 100%;
+  gap: 15px;
+}
+
+.product-images figure {
+  background-color: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  transition:all 0.8s ease-in-out;
+  cursor: pointer;
+}
+
+.product-images figure:hover{
+  transform: scale(1.04);
+
+}
+
+.product-images figure img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  flex: 1 0 100%;
+}
+
+.product-images .thumbnails {
+  display: flex;
+  gap: 15px;
+}
+
+.product-images .thumbnails .thumb {
+  flex: 1;
+  height: 90px;
+  border-radius: 10px;
+  background-color: var(--orange);
+  cursor: pointer;
+}
+
+.product-images .thumbnails .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-images .thumbnails .thumb.active {
+  padding: 3px;
+  position: relative;
+}
+
+.product-images .thumbnails .thumb.active::after {
+  content: '';
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  background-color: #fffa;
+  left: 3px;
+  top: 3px;
+  border-radius: 10px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+.product-details > p:first-child {
+  color: var(--orange);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.product-details h1 {
+  font-size: 5vw;
+  color: var(--very-dark-blue);
+  margin-bottom: 20px;
+}
+
+.product-details h1 + p {
+  color: var(--dark-grayish-blue);
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.product-details .price {
+  display: flex;
+  gap: 10px;
+}
+
+.product-details .price h3 {
+  font-size: 25px;
+}
+
+.product-details .price span {
+  display: inline-grid;
+  place-items: center;
+  background-color: var(--pale-orange);
+  color: var(--orange);
+  border-radius: 5px;
+  padding: 1px 8px;
+  font-weight: 700;
+}
+
+.product-details .old-price {
+  color: var(--grayish-blue);
+  text-decoration: line-through;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.product-details .actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-details .actions .product-counter {
+  background-color: var(--light-grayish-blue);
+  display: flex;
+  width: 120px;
+  height: 45px;
+  border-radius: 8px;
+}
+
+.product-details .product-counter :is(button, span) {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--very-dark-blue);
+}
+
+.product-details .actions > button {
+  width: 200px;
+  height: 45px;
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  box-shadow: 0 5px 15px var(--orange);
+}
+
+@media screen and (max-width: 900px) {
+  .App {
+    min-height: 100vh;
+    height: auto;
+    padding: 0;
+  }
+
+  main {
+    padding: 0;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .product-images {
+    height: 380px;
+    width: 100%;
+  }
+
+  .product-images figure {
+    border-radius: 0px;
+  }
+
+  .product-images .thumbnails {
+    display: none;
+  }
+
+  .product-details {
+    padding: 20px;
+  }
+
+  .product-details h1 {
+    font-size: 9vmin;
+    margin-bottom: 10px;
+  }
+
+  .product-details h1 + p {
+    line-height: 1.7;
+  }
+
+  .product-details .actions {
+    flex-direction: column;
+  }
+
+  .product-details .actions .product-counter {
+    width: 100%;
+    height: 60px;
+  }
+
+  .product-details .actions > button {
+    width: 100%;
+    height: 60px;
+  }
+
+}
